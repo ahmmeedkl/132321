@@ -1,0 +1,19 @@
+{
+  "name": "ahmed-abdullah-portfolio",
+  "version": "1.0.0",
+  "description": "Minimalist personal portfolio website for Ahmed Abdullah",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx browser-sync start --server --files \"*.html, *.css, *.js\""
+  },
+  "keywords": [
+    "portfolio",
+    "minimalist",
+    "developer"
+  ],
+  "author": "Ahmed Abdullah",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.3"
+  }
+}
