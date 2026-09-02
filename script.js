@@ -135,44 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
     }
 
-    /* ----------------------------------------------------------------------
-       1. Top Banner Image Scroll-Fade Effect (اختفاء الصورة العلوية عند السكرول)
-       ---------------------------------------------------------------------- */
-    const heroBanner = document.getElementById('hero-banner');
-    const scrollHint = document.getElementById('scroll-hint');
 
-    function handleScrollFade() {
-        if (!heroBanner) return;
-
-        const scrollY = window.scrollY || window.pageYOffset;
-        const fadeThreshold = 380; // Distance in px after which image completely disappears
-
-        if (scrollY <= fadeThreshold) {
-            // Calculate opacity from 1 to 0
-            const opacity = Math.max(0, 1 - (scrollY / fadeThreshold));
-            // Calculate smooth upward translate and subtle scale reduction
-            const translateY = -(scrollY * 0.4);
-            const scale = Math.max(0.85, 1 - (scrollY / (fadeThreshold * 2.5)));
-            
-            heroBanner.style.opacity = opacity.toFixed(2);
-            heroBanner.style.transform = `translateY(${translateY}px) scale(${scale})`;
-            heroBanner.style.filter = `blur(${ (1 - opacity) * 8 }px)`;
-            heroBanner.style.pointerEvents = opacity < 0.1 ? 'none' : 'auto';
-
-            if (scrollHint) {
-                scrollHint.style.opacity = (opacity * 0.8).toFixed(2);
-            }
-        } else {
-            // Completely hide when scrolled past threshold
-            heroBanner.style.opacity = '0';
-            heroBanner.style.pointerEvents = 'none';
-            if (scrollHint) scrollHint.style.opacity = '0';
-        }
-    }
-
-    // Attach scroll listener
-    window.addEventListener('scroll', handleScrollFade, { passive: true });
-    handleScrollFade(); // Initial calculation
 
 
     /* ----------------------------------------------------------------------
@@ -412,54 +375,112 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ----------------------------------------------------------------------
-       4. Navigation Drawer & Smooth Scrolling
+       4. Multi-Page Tab App Navigation (نظام التنقل بين الصفحات والسحب)
        ---------------------------------------------------------------------- */
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const mobileDrawer = document.getElementById('mobile-drawer');
-    const drawerClose = document.getElementById('drawer-close');
-    const drawerItems = document.querySelectorAll('.drawer-item');
+    const pages = document.querySelectorAll('.app-page');
+    const desktopNavItems = document.querySelectorAll('.nav-links .nav-item');
+    const mobileNavItems = document.querySelectorAll('.mobile-bottom-nav .mobile-tab-btn');
+    const pageNavButtons = document.querySelectorAll('[data-nav]');
 
-    if (mobileToggle && mobileDrawer) {
-        mobileToggle.addEventListener('click', () => {
-            mobileDrawer.classList.add('open');
-        });
-    }
+    const pageOrder = ['hero', 'about', 'skills', 'projects', 'contact'];
 
-    if (drawerClose && mobileDrawer) {
-        drawerClose.addEventListener('click', () => {
-            mobileDrawer.classList.remove('open');
-        });
-    }
+    function navigateToPage(targetId) {
+        if (!targetId) return;
 
-    drawerItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (mobileDrawer) mobileDrawer.classList.remove('open');
-        });
-    });
+        targetId = targetId.replace('#', '');
+        const targetPage = document.getElementById(targetId);
+        if (!targetPage) return;
 
-    // Active Link Highlighting on Scroll
-    const sections = document.querySelectorAll('section');
-    const navItems = document.querySelectorAll('.nav-item');
+        // Update Pages with smooth active state
+        pages.forEach(p => p.classList.remove('active'));
+        targetPage.classList.add('active');
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        const scrollY = window.pageYOffset;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 120;
-            const sectionHeight = section.offsetHeight;
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === `#${current}`) {
+        // Update Desktop Nav Tabs
+        desktopNavItems.forEach(item => {
+            if (item.getAttribute('data-nav') === targetId) {
                 item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+
+        // Update Mobile Bottom Nav Bar
+        mobileNavItems.forEach(btn => {
+            if (btn.getAttribute('data-nav') === targetId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Smoothly scroll to top of page
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Update URL hash without reload
+        if (history.pushState) {
+            history.pushState(null, null, '#' + targetId);
+        } else {
+            location.hash = '#' + targetId;
+        }
+    }
+
+    // Attach click listeners to all buttons and links with data-nav
+    pageNavButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = btn.getAttribute('data-nav');
+            if (target) {
+                navigateToPage(target);
             }
         });
     });
+
+    // Check initial URL hash on load
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && document.getElementById(initialHash)) {
+        navigateToPage(initialHash);
+    }
+
+    // Touch Swipe Navigation for Mobile (سحب الشاشة يميناً ويساراً للتنقل السلس)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipeGesture();
+    }, { passive: true });
+
+    function handleSwipeGesture() {
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        const minSwipeDistance = 65;
+
+        // Ensure horizontal swipe is dominant over vertical scroll
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+            const activePage = document.querySelector('.app-page.active');
+            const currentId = activePage ? activePage.id : 'hero';
+            const currentIndex = pageOrder.indexOf(currentId);
+
+            if (currentIndex !== -1) {
+                // Swipe Left -> Next Page (in RTL)
+                if (diffX < 0 && currentIndex < pageOrder.length - 1) {
+                    navigateToPage(pageOrder[currentIndex + 1]);
+                } 
+                // Swipe Right -> Previous Page (in RTL)
+                else if (diffX > 0 && currentIndex > 0) {
+                    navigateToPage(pageOrder[currentIndex - 1]);
+                }
+            }
+        }
+    }
 
     // Bento card mouse glow tracking
     document.querySelectorAll('.bento-card').forEach(card => {

@@ -26,7 +26,7 @@
     <!-- CSS Style -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
+<body class="dark-theme app-mode">
 
     <!-- Interactive Particle Background Canvas -->
     <canvas id="particle-canvas"></canvas>
@@ -40,110 +40,123 @@
     <!-- Background Audio Element -->
     <audio id="bg-audio" src="audio.mp3" loop preload="auto"></audio>
 
-    <!-- Floating Audio Player Widget -->
-    <div class="floating-audio-player" id="audio-player-widget">
-        <div class="audio-player-inner">
-            <button id="audio-toggle-btn" class="audio-btn" aria-label="تشغيل/إيقاف الصوت">
-                <i class="fa-solid fa-compact-disc fa-spin-slow icon-play"></i>
-                <i class="fa-solid fa-pause icon-pause hidden"></i>
-            </button>
-            <div class="audio-info">
-                <span class="audio-title">موسيقى خلفية ترحيبية</span>
-                <div class="equalizer-bars" id="eq-bars">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </div>
-            <div class="audio-controls-extra">
-                <button id="mute-btn" class="audio-sub-btn" title="كتم الصوت">
-                    <i class="fa-solid fa-volume-high"></i>
-                </button>
-                <button id="upload-audio-btn" class="audio-sub-btn" title="تغيير المقطع الصوتي">
-                    <i class="fa-solid fa-file-audio"></i>
-                </button>
-                <input type="file" id="custom-audio-input" accept="audio/*" class="hidden-input">
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation Bar -->
+    <!-- Top Navigation Bar (مع شريط الموسيقى المدمج داخله) -->
     <header class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#hero" class="nav-logo">
+            <a href="#hero" class="nav-logo" data-nav="hero">
                 <span class="logo-badge">3Sec 🚀</span>
                 <span class="logo-name">أحمد عبد الله</span>
             </a>
 
+            <!-- Desktop Nav Links / Tab Switcher -->
             <nav class="nav-links" id="nav-links">
-                <a href="#hero" class="nav-item active"><i class="fa-solid fa-house"></i> الرئيسية</a>
-                <a href="#about" class="nav-item"><i class="fa-solid fa-user-astronaut"></i> عني</a>
-                <a href="#skills" class="nav-item"><i class="fa-solid fa-code"></i> المهارات</a>
-                <a href="#projects" class="nav-item"><i class="fa-solid fa-laptop-code"></i> المشاريع</a>
-                <a href="#journey" class="nav-item"><i class="fa-solid fa-rocket"></i> طموحي</a>
-                <a href="#contact" class="nav-item nav-cta"><i class="fa-solid fa-paper-plane"></i> تواصل معي</a>
+                <button class="nav-item active" data-nav="hero"><i class="fa-solid fa-house"></i> الرئيسية</button>
+                <button class="nav-item" data-nav="about"><i class="fa-solid fa-user-astronaut"></i> عني وطموحي</button>
+                <button class="nav-item" data-nav="skills"><i class="fa-solid fa-code"></i> المهارات</button>
+                <button class="nav-item" data-nav="projects"><i class="fa-solid fa-laptop-code"></i> المشاريع</button>
+                <button class="nav-item nav-cta" data-nav="contact"><i class="fa-solid fa-paper-plane"></i> تواصل معي</button>
             </nav>
 
-            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="قائمة التصفح">
-                <i class="fa-solid fa-bars"></i>
-            </button>
+            <!-- Extra Actions: Integrated Audio Player & WhatsApp -->
+            <div class="nav-extra-actions">
+                <!-- Integrated Compact Audio Player Widget -->
+                <div class="navbar-audio-player" id="audio-player-widget">
+                    <button id="audio-toggle-btn" class="audio-btn" aria-label="تشغيل/إيقاف الصوت" title="تشغيل / إيقاف الموسيقى">
+                        <i class="fa-solid fa-compact-disc fa-spin-slow icon-play"></i>
+                        <i class="fa-solid fa-pause icon-pause hidden"></i>
+                    </button>
+                    <div class="audio-info nav-audio-info">
+                        <span class="audio-title">صوت ترحيبي</span>
+                        <div class="equalizer-bars" id="eq-bars">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                    <button id="mute-btn" class="audio-sub-btn" title="كتم الصوت">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                    <button id="upload-audio-btn" class="audio-sub-btn" title="تغيير المقطع الصوتي">
+                        <i class="fa-solid fa-file-audio"></i>
+                    </button>
+                    <input type="file" id="custom-audio-input" accept="audio/*" class="hidden-input">
+                </div>
+
+                <!-- Direct WhatsApp Button -->
+                <a href="https://wa.me/201102289174" target="_blank" class="nav-wa-icon-btn" title="واتساب مباشر">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Mobile Drawer Overlay -->
-    <div class="mobile-drawer" id="mobile-drawer">
-        <button class="drawer-close" id="drawer-close"><i class="fa-solid fa-xmark"></i></button>
-        <div class="drawer-links">
-            <a href="#hero" class="drawer-item"><i class="fa-solid fa-house"></i> الرئيسية</a>
-            <a href="#about" class="drawer-item"><i class="fa-solid fa-user-astronaut"></i> عني</a>
-            <a href="#skills" class="drawer-item"><i class="fa-solid fa-code"></i> المهارات</a>
-            <a href="#projects" class="drawer-item"><i class="fa-solid fa-laptop-code"></i> المشاريع</a>
-            <a href="#journey" class="drawer-item"><i class="fa-solid fa-rocket"></i> طموحي ومسيرتي</a>
-            <a href="#contact" class="drawer-item cta"><i class="fa-solid fa-paper-plane"></i> تواصل معي</a>
-        </div>
-    </div>
+    <!-- Mobile Bottom App Bar (شريط التنقل السفلي للهواتف) -->
+    <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+        <button class="mobile-tab-btn active" data-nav="hero">
+            <i class="fa-solid fa-house"></i>
+            <span>الرئيسية</span>
+        </button>
+        <button class="mobile-tab-btn" data-nav="about">
+            <i class="fa-solid fa-user-astronaut"></i>
+            <span>عني</span>
+        </button>
+        <button class="mobile-tab-btn" data-nav="skills">
+            <i class="fa-solid fa-code"></i>
+            <span>المهارات</span>
+        </button>
+        <button class="mobile-tab-btn" data-nav="projects">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>المشاريع</span>
+        </button>
+        <button class="mobile-tab-btn" data-nav="contact">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>تواصل</span>
+        </button>
+    </nav>
 
-    <!-- Main Content Wrapper -->
-    <main>
+    <!-- Main Content Wrapper / Multi-Page App Container -->
+    <main class="app-pages-wrapper" id="app-pages">
 
-        <!-- Top Hero Section with Fading Scroll Banner -->
-        <section id="hero" class="hero-section">
-            <!-- Top Banner Container (Disappears on scroll) -->
-            <div class="hero-scroll-banner" id="hero-banner">
-                <div class="banner-glass-wrapper">
-                    <div class="banner-image-container">
-                        <!-- Main Hero Image -->
-                        <img src="profile.jpg" alt="أحمد عبد الله - طالب ثانوية عامة ومطور برمجيات" class="hero-profile-img" id="hero-img">
-                        <div class="banner-overlay-gradient"></div>
+        <!-- =================================================================
+             PAGE 1: HERO / HOME (الرئيسية)
+             ================================================================= -->
+        <section id="hero" class="app-page active">
+            <div class="container hero-split-container">
+                
+                <!-- Photo Showcase Column (First) -->
+                <div class="hero-image-col">
+                    <div class="banner-glass-wrapper">
+                        <div class="banner-image-container">
+                            <img src="profile.jpg" alt="أحمد عبد الله - طالب ثانوية عامة ومطور برمجيات" class="hero-profile-img" id="hero-img">
+                            <div class="banner-overlay-gradient"></div>
 
-                        <div class="status-badge">
-                            <span class="status-dot"></span>
-                            طالب بالصف الثالث الثانوي 🎓 | مطور برمجيات
+                            <div class="status-badge">
+                                <span class="status-dot"></span>
+                                طالب بالصف الثالث الثانوي 🎓 | مطور برمجيات
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Hero Text Content -->
-            <div class="container hero-content-container">
-                <div class="hero-text-block">
+                <!-- Text Content Column (Second) -->
+                <div class="hero-text-col">
                     <div class="hero-tag animate-fade-in">
-                        <i class="fa-solid fa-fire-flame-curved"></i> طالب بالصف الثالث الثانوي (3 ثانوي) ومطور برمجيات
+                        <i class="fa-solid fa-fire-flame-curved"></i> طالب بالصف الثالث الثانوي | مطور برمجيات
                     </div>
                     <h1 class="hero-heading animate-fade-in">
                         مرحباً، أنا <span class="highlight-text">أحمد عبد الله</span>
                     </h1>
                     <p class="hero-subtext animate-fade-in">
-                        طالب شغوف في <strong class="text-white">الصف الثالث الثانوي</strong>، أجمع بين التميز الدراسي وعشقي العميق لتطوير البرمجيات وبناء تطبيقات الويب الحديثة وحل المشكلات الهندسية.
+                        طالب شغوف في <strong class="text-white">الصف الثالث الثانوي (3 ثانوي)</strong>، أجمع بين التميز الدراسي وعشقي العميق لتطوير البرمجيات وبناء تطبيقات الويب الحديثة وحل المشكلات الهندسية.
                     </p>
                     <div class="hero-actions animate-fade-in">
-                        <a href="#contact" class="btn btn-primary">
+                        <button class="btn btn-primary" data-nav="contact">
                             <i class="fa-solid fa-envelope"></i> تواصل معي الآن
-                        </a>
-                        <a href="#projects" class="btn btn-secondary">
+                        </button>
+                        <button class="btn btn-secondary" data-nav="projects">
                             <i class="fa-solid fa-eye"></i> استكشف أعمالي
-                        </a>
+                        </button>
                     </div>
                     
                     <div class="hero-quick-stats animate-fade-in">
@@ -158,29 +171,34 @@
                             <i class="fa-solid fa-code-commit"></i>
                             <div>
                                 <span class="stat-value">+15</span>
-                                <span class="stat-label">مشروعاً وتطبيقاً منجزاً</span>
+                                <span class="stat-label">مشروعاً وتطبيقاً</span>
                             </div>
                         </div>
                         <div class="stat-card">
                             <i class="fa-solid fa-bolt"></i>
                             <div>
                                 <span class="stat-value">100%</span>
-                                <span class="stat-label">شغف وطموح مستمر</span>
+                                <span class="stat-label">شغف وطموح</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
-            <!-- Scroll Indicator -->
-            <div class="scroll-down-hint" id="scroll-hint">
-                <span>مرر للأسفل للاستكشاف</span>
-                <i class="fa-solid fa-chevron-down bounce"></i>
+            <!-- Page Navigation Bottom Hint -->
+            <div class="page-footer-nav">
+                <button class="page-nav-next-btn" data-nav="about">
+                    <span>الانتقال إلى قسم: عني وطموحي</span>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
             </div>
         </section>
 
-        <!-- Bento Portfolio Grid (About & Aspirations Combined) -->
-        <section id="about" class="section-padding bento-section">
+        <!-- =================================================================
+             PAGE 2: ABOUT & JOURNEY (عني وطموحي)
+             ================================================================= -->
+        <section id="about" class="app-page">
             <div class="container">
                 <div class="section-header text-center">
                     <span class="section-badge"><i class="fa-solid fa-shapes"></i> نظرة عامة</span>
@@ -291,18 +309,30 @@
                                 <span class="status-text-bento">متاح للتعاون البرمجي والمشاريع الإبداعية</span>
                             </div>
                             <div class="quick-call-cta">
-                                <a href="#contact" class="bento-cta-btn"><i class="fa-solid fa-message"></i> تواصل معي الآن</a>
+                                <button class="bento-cta-btn" data-nav="contact"><i class="fa-solid fa-message"></i> تواصل معي الآن</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Page Navigation Bottom Hint -->
+            <div class="page-footer-nav dual">
+                <button class="page-nav-prev-btn" data-nav="hero">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span>الرئيسية</span>
+                </button>
+                <button class="page-nav-next-btn" data-nav="skills">
+                    <span>الانتقال إلى: المهارات</span>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
         </section>
 
-
-
-        <!-- Skills Section -->
-        <section id="skills" class="section-padding skills-section">
+        <!-- =================================================================
+             PAGE 3: SKILLS (المهارات)
+             ================================================================= -->
+        <section id="skills" class="app-page">
             <div class="container">
                 <div class="section-header text-center">
                     <span class="section-badge"><i class="fa-solid fa-layer-group"></i> المهارات والتقنيات</span>
@@ -354,10 +384,24 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Page Navigation Bottom Hint -->
+            <div class="page-footer-nav dual">
+                <button class="page-nav-prev-btn" data-nav="about">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span>عني وطموحي</span>
+                </button>
+                <button class="page-nav-next-btn" data-nav="projects">
+                    <span>الانتقال إلى: المشاريع</span>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section-padding projects-section">
+        <!-- =================================================================
+             PAGE 4: PROJECTS (المشاريع)
+             ================================================================= -->
+        <section id="projects" class="app-page">
             <div class="container">
                 <div class="section-header text-center">
                     <span class="section-badge"><i class="fa-solid fa-diagram-project"></i> معارض الأعمال</span>
@@ -388,8 +432,8 @@
                                 <span>HTML5</span> <span>CSS3</span> <span>JavaScript</span> <span>LocalStorage</span>
                             </div>
                             <div class="project-links">
-                                <a href="#contact" class="proj-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> معاينة النظام</a>
-                                <a href="#contact" class="proj-link secondary"><i class="fa-brands fa-github"></i> الشفرة المصدرية</a>
+                                <button class="proj-link" data-nav="contact"><i class="fa-solid fa-arrow-up-right-from-square"></i> طلب معاينة</button>
+                                <a href="https://github.com" target="_blank" class="proj-link secondary"><i class="fa-brands fa-github"></i> GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -416,8 +460,8 @@
                                 <span>C++</span> <span>Algorithms</span> <span>Web Visualization</span>
                             </div>
                             <div class="project-links">
-                                <a href="#contact" class="proj-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> التجربة التفاعلية</a>
-                                <a href="#contact" class="proj-link secondary"><i class="fa-brands fa-github"></i> الكود المستقبلي</a>
+                                <button class="proj-link" data-nav="contact"><i class="fa-solid fa-arrow-up-right-from-square"></i> التجربة التفاعلية</button>
+                                <a href="https://github.com" target="_blank" class="proj-link secondary"><i class="fa-brands fa-github"></i> الكود</a>
                             </div>
                         </div>
                     </div>
@@ -439,26 +483,40 @@
                         </div>
                         <div class="project-body">
                             <h3>نظام المراسلة السريع وإرسال الإشعارات</h3>
-                            <p>نموذج تواصل تفاعلي يربط الواجهة الأمامية بخدمات البريد الإلكتروني الفورية بدون الحاجة لخدمات خادم معقدة.</p>
+                            <p>نموذج تواصل تفاعلي يربط الواجهة الأمامية بخدمات البريد الإلكتروني الفورية وتطبيق واتساب بدون الحاجة لخدمات خادم معقدة.</p>
                             <div class="project-tags">
-                                <span>JavaScript API</span> <span>Web3Forms</span> <span>Async UX</span>
+                                <span>JavaScript API</span> <span>WhatsApp API</span> <span>Async UX</span>
                             </div>
                             <div class="project-links">
-                                <a href="#contact" class="proj-link"><i class="fa-solid fa-paper-plane"></i> جربه الآن بالأسفل</a>
+                                <button class="proj-link" data-nav="contact"><i class="fa-solid fa-paper-plane"></i> جربه الآن في تواصل معي</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Page Navigation Bottom Hint -->
+            <div class="page-footer-nav dual">
+                <button class="page-nav-prev-btn" data-nav="skills">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span>المهارات</span>
+                </button>
+                <button class="page-nav-next-btn" data-nav="contact">
+                    <span>الانتقال إلى: تواصل معي</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
         </section>
 
-        <!-- Real Working Contact Form Section -->
-        <section id="contact" class="section-padding contact-section">
+        <!-- =================================================================
+             PAGE 5: CONTACT (تواصل معي)
+             ================================================================= -->
+        <section id="contact" class="app-page">
             <div class="container">
                 <div class="section-header text-center">
                     <span class="section-badge"><i class="fa-solid fa-envelope-open-text"></i> تواصل معي حقيقي</span>
                     <h2 class="section-title">أرسل لي رسالة مباشرة</h2>
-                    <p class="section-subtitle">هذا النموذج يعمل بشكل حقيقي وسيصل إشعار بريدي فورياً إلى صندوق وارد أحمد عبد الله</p>
+                    <p class="section-subtitle">يمكنك مراسلتي فوراً عبر البريد الإلكتروني أو مباشرة عبر واتساب بضغطة واحدة</p>
                 </div>
 
                 <div class="contact-wrapper">
@@ -497,28 +555,28 @@
                         </div>
                     </div>
 
-                    <!-- Contact Form Formspree/Web3Forms Integration -->
+                    <!-- Contact Form -->
                     <div class="contact-form-side">
                         <form id="real-contact-form" class="contact-form">
                             
                             <div class="form-group">
                                 <label for="sender-name"><i class="fa-solid fa-user"></i> اسمك الكريم:</label>
-                                <input type="text" id="sender-name" name="الاسم" placeholder="أدخل اسمك الكامل..." required>
+                                <input type="text" id="sender-name" name="name" placeholder="أدخل اسمك الكامل..." required>
                             </div>
 
                             <div class="form-group">
                                 <label for="sender-email"><i class="fa-solid fa-at"></i> بريدك الإلكتروني:</label>
-                                <input type="email" id="sender-email" name="البريد_الإلكتروني" placeholder="example@domain.com" required>
+                                <input type="email" id="sender-email" name="email" placeholder="example@domain.com" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="sender-subject"><i class="fa-solid fa-heading"></i> موضوع الرسالة:</label>
-                                <input type="text" id="sender-subject" name="الموضوع" placeholder="عن ماذا تدور رسالتك؟" required>
+                                <input type="text" id="sender-subject" name="subject" placeholder="عن ماذا تدور رسالتك؟" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="sender-message"><i class="fa-solid fa-message"></i> نص الرسالة:</label>
-                                <textarea id="sender-message" name="الرسالة" rows="5" placeholder="اكتب رسالتك التفصيلية هنا..." required></textarea>
+                                <textarea id="sender-message" name="message" rows="5" placeholder="اكتب رسالتك التفصيلية هنا..." required></textarea>
                             </div>
 
                             <div class="form-actions-row">
@@ -537,6 +595,14 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Page Navigation Bottom Hint -->
+            <div class="page-footer-nav">
+                <button class="page-nav-prev-btn" data-nav="hero">
+                    <i class="fa-solid fa-house"></i>
+                    <span>العودة إلى الصفحة الرئيسية</span>
+                </button>
+            </div>
         </section>
 
     </main>
@@ -545,7 +611,7 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-brand">
-                <a href="#hero" class="nav-logo">
+                <a href="#hero" class="nav-logo" data-nav="hero">
                     <span class="logo-badge">3Sec 🚀</span>
                     <span class="logo-name">أحمد عبد الله</span>
                 </a>
