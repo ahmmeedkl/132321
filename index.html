@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أحمد عبد الله | طالب كلية الحاسبات والمعلومات ومطور برمجيات</title>
+    <title>أحمد عبد الله | طالب بالصف الثالث الثانوي ومطور برمجيات</title>
     
     <!-- SEO & Meta Tags -->
-    <meta name="description" content="الموقع الشخصي لأحمد عبد الله - طالب كلية الحاسبات والمعلومات ومطور برمجيات متكافئ يطور تطبيقات الويب والأنظمة الحديثة.">
-    <meta name="keywords" content="أحمد عبد الله, كلية الحاسبات والمعلومات, مطور ويب, برمجة, Ahmed Abdullah, Computers and Information, Software Engineer">
+    <meta name="description" content="الموقع الشخصي لأحمد عبد الله - طالب بالصف الثالث الثانوي (3 ثانوي) ومطور برمجيات واعد يبني تطبيقات الويب والأنظمة الحديثة.">
+    <meta name="keywords" content="أحمد عبد الله, طالب ثانوية عامة, 3 ثانوي, مطور برمجيات, برمجة, Ahmed Abdullah, Web Developer, Software Engineer, High School Developer">
     <meta name="author" content="أحمد عبد الله">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="أحمد عبد الله | طالب كلية الحاسبات والمعلومات">
-    <meta property="og:description" content="تصفح معرض أعمال أحمد عبد الله، مشاريع البرمجة ونموذج التواصل المباشر.">
+    <meta property="og:title" content="أحمد عبد الله | طالب بالصف الثالث الثانوي ومطور برمجيات">
+    <meta property="og:description" content="تصفح معرض أعمال أحمد عبد الله، مهارات البرمجة، والمشاريع والتواصل المباشر.">
     <meta property="og:image" content="profile.jpg">
     
-    <!-- Fonts: Cairo & Tajawal -->
+    <!-- Fonts: Cairo, Tajawal & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-theme">
+
+    <!-- Interactive Particle Background Canvas -->
+    <canvas id="particle-canvas"></canvas>
 
     <!-- Background Ambient Glow & Grid -->
     <div class="bg-grid"></div>
@@ -69,16 +72,16 @@
     <header class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#hero" class="nav-logo">
-                <span class="logo-badge">FCI</span>
+                <span class="logo-badge">3Sec 🚀</span>
                 <span class="logo-name">أحمد عبد الله</span>
             </a>
 
             <nav class="nav-links" id="nav-links">
                 <a href="#hero" class="nav-item active"><i class="fa-solid fa-house"></i> الرئيسية</a>
-                <a href="#about" class="nav-item"><i class="fa-solid fa-user-graduate"></i> عني</a>
+                <a href="#about" class="nav-item"><i class="fa-solid fa-user-astronaut"></i> عني</a>
                 <a href="#skills" class="nav-item"><i class="fa-solid fa-code"></i> المهارات</a>
                 <a href="#projects" class="nav-item"><i class="fa-solid fa-laptop-code"></i> المشاريع</a>
-                <a href="#academic" class="nav-item"><i class="fa-solid fa-university"></i> الحاسبات والمعلومات</a>
+                <a href="#journey" class="nav-item"><i class="fa-solid fa-rocket"></i> طموحي</a>
                 <a href="#contact" class="nav-item nav-cta"><i class="fa-solid fa-paper-plane"></i> تواصل معي</a>
             </nav>
 
@@ -93,10 +96,10 @@
         <button class="drawer-close" id="drawer-close"><i class="fa-solid fa-xmark"></i></button>
         <div class="drawer-links">
             <a href="#hero" class="drawer-item"><i class="fa-solid fa-house"></i> الرئيسية</a>
-            <a href="#about" class="drawer-item"><i class="fa-solid fa-user-graduate"></i> عني</a>
+            <a href="#about" class="drawer-item"><i class="fa-solid fa-user-astronaut"></i> عني</a>
             <a href="#skills" class="drawer-item"><i class="fa-solid fa-code"></i> المهارات</a>
             <a href="#projects" class="drawer-item"><i class="fa-solid fa-laptop-code"></i> المشاريع</a>
-            <a href="#academic" class="drawer-item"><i class="fa-solid fa-university"></i> الحاسبات والمعلومات</a>
+            <a href="#journey" class="drawer-item"><i class="fa-solid fa-rocket"></i> طموحي ومسيرتي</a>
             <a href="#contact" class="drawer-item cta"><i class="fa-solid fa-paper-plane"></i> تواصل معي</a>
         </div>
     </div>
@@ -110,11 +113,13 @@
             <div class="hero-scroll-banner" id="hero-banner">
                 <div class="banner-glass-wrapper">
                     <div class="banner-image-container">
-                        <img src="profile.jpg" alt="أحمد عبد الله - كلية الحاسبات والمعلومات" class="hero-profile-img" id="hero-img">
+                        <!-- Main Hero Image -->
+                        <img src="profile.jpg" alt="أحمد عبد الله - طالب ثانوية عامة ومطور برمجيات" class="hero-profile-img" id="hero-img">
                         <div class="banner-overlay-gradient"></div>
+
                         <div class="status-badge">
                             <span class="status-dot"></span>
-                            طالب بكلية الحاسبات والمعلومات | متاح للمشاريع
+                            طالب بالصف الثالث الثانوي 🎓 | مطور برمجيات
                         </div>
                     </div>
                 </div>
@@ -124,13 +129,13 @@
             <div class="container hero-content-container">
                 <div class="hero-text-block">
                     <div class="hero-tag animate-fade-in">
-                        <i class="fa-solid fa-terminal"></i> أهلاً بك في عالمي البرمجي
+                        <i class="fa-solid fa-fire-flame-curved"></i> طالب بالصف الثالث الثانوي (3 ثانوي) ومطور برمجيات
                     </div>
                     <h1 class="hero-heading animate-fade-in">
                         مرحباً، أنا <span class="highlight-text">أحمد عبد الله</span>
                     </h1>
                     <p class="hero-subtext animate-fade-in">
-                        طالب شغوف في <strong class="text-white">كلية الحاسبات والمعلومات</strong>، متخصص في تطوير حلول البرمجيات الابتكارية، بناء تطبيقات الويب الحديثة، وتصميم تجارب مستخدم متميزة بتقنيات المستقبل.
+                        طالب شغوف في <strong class="text-white">الصف الثالث الثانوي</strong>، أجمع بين التميز الدراسي وعشقي العميق لتطوير البرمجيات وبناء تطبيقات الويب الحديثة وحل المشكلات الهندسية.
                     </p>
                     <div class="hero-actions animate-fade-in">
                         <a href="#contact" class="btn btn-primary">
@@ -145,22 +150,22 @@
                         <div class="stat-card">
                             <i class="fa-solid fa-graduation-cap"></i>
                             <div>
-                                <span class="stat-value">كلية الحاسبات</span>
-                                <span class="stat-label">والمعلومات</span>
+                                <span class="stat-value">الصف الثالث</span>
+                                <span class="stat-label">الثانوية العامة 🇪🇬</span>
                             </div>
                         </div>
                         <div class="stat-card">
                             <i class="fa-solid fa-code-commit"></i>
                             <div>
                                 <span class="stat-value">+15</span>
-                                <span class="stat-label">مشروعاً تم إنجازه</span>
+                                <span class="stat-label">مشروعاً وتطبيقاً منجزاً</span>
                             </div>
                         </div>
                         <div class="stat-card">
                             <i class="fa-solid fa-bolt"></i>
                             <div>
                                 <span class="stat-value">100%</span>
-                                <span class="stat-label">شغف وتطور مستمر</span>
+                                <span class="stat-label">شغف وطموح مستمر</span>
                             </div>
                         </div>
                     </div>
@@ -174,73 +179,135 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section-padding about-section">
+        <!-- Bento Portfolio Grid (About & Aspirations Combined) -->
+        <section id="about" class="section-padding bento-section">
             <div class="container">
                 <div class="section-header text-center">
-                    <span class="section-badge"><i class="fa-solid fa-user"></i> نبذة عني</span>
-                    <h2 class="section-title">من هو <span class="highlight">أحمد عبد الله</span>؟</h2>
-                    <p class="section-subtitle">شغف بالبرمجة، طموح بلا حدود، ورؤية لبناء مستقبل رقمي أفضل</p>
+                    <span class="section-badge"><i class="fa-solid fa-shapes"></i> نظرة عامة</span>
+                    <h2 class="section-title">لوحة تحكم <span class="highlight">أحمد عبد الله</span></h2>
+                    <p class="section-subtitle">رحلة برمجية واعدة، تفوق دراسي في الثانوية العامة، ورؤية طموحة للمستقبل</p>
                 </div>
 
-                <div class="about-grid">
-                    <div class="about-card main-about">
-                        <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                        <h3>رحلتي في الحاسبات والمعلومات</h3>
-                        <p>
-                            أنا **أحمد عبد الله**، طالب في كلية الحاسبات والمعلومات. أركز في دراستي وشغفي الشخصي على فهم عميق لعلوم الحاسب، من خوارزميات وهياكل بيانات، إلى هندسة البرمجيات وتطوير الأنظمة الموزعة وتطبيقات الويب المتكاملة.
-                        </p>
-                        <p>
-                            أؤمن بأن الكود اللظيف والتصميم المبهر هما وجهان لعملة واحدة. أسعى دائماً لتحويل الفكر البرمجي المعقد إلى منتجات سهلة الاستخدام وسريعة الاستجابة.
-                        </p>
-                        <div class="about-highlights">
-                            <div class="hl-item"><i class="fa-solid fa-check-circle"></i> حل المشكلات الهندسية (Problem Solving)</div>
-                            <div class="hl-item"><i class="fa-solid fa-check-circle"></i> تطوير واجهات الويب الحديثة (Modern Frontend)</div>
-                            <div class="hl-item"><i class="fa-solid fa-check-circle"></i> تصميم قواعد البيانات وبناء APIs المتكاملة</div>
-                            <div class="hl-item"><i class="fa-solid fa-check-circle"></i> البحث والتعلم السريع لأحدث التقنيات</div>
+                <div class="bento-grid">
+                    <!-- Card 1: My Journey (Large - Spans 2 cols, 2 rows) -->
+                    <div class="bento-card card-journey col-span-2 row-span-2">
+                        <div class="card-glow-glow"></div>
+                        <div class="bento-card-inner">
+                            <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                            <h3>رحلتي بين الثانوية العامة وشغف البرمجة</h3>
+                            <p>
+                                أنا <strong>أحمد عبد الله</strong>، طالب في <strong>الصف الثالث الثانوي (3 ثانوي)</strong> ومبرمج برمجيات حر. بدأت علاقتي مع البرمجة مبكراً مدفوعاً بحب الاستكشاف ورغبة حقيقية في بناء أدوات رقمية مفيدة تحل مشكلات واقعية.
+                            </p>
+                            <p>
+                                على الرغم من تحديات مرحلة الثانوية العامة، أحرص دائماً على تنظيم وقتي بين التحصيل الدراسي العالي وبين صقل مهاراتي البرمجية في الخوارزميات، تطوير الويب، وهيكلة الأنظمة الحديثة.
+                            </p>
+                            <div class="about-highlights-bento">
+                                <span class="hl-tag"><i class="fa-solid fa-brain"></i> تنظيم الوقت والإنتاجية</span>
+                                <span class="hl-tag"><i class="fa-solid fa-code"></i> تطوير واجهات الويب الحديثة</span>
+                                <span class="hl-tag"><i class="fa-solid fa-microchip"></i> التفكير المنطقي والرياضي</span>
+                                <span class="hl-tag"><i class="fa-solid fa-bolt"></i> التعلم الذاتي السريع</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="about-sidebar">
-                        <div class="info-box">
-                            <div class="info-row">
-                                <span class="info-label"><i class="fa-solid fa-user-check"></i> الاسم:</span>
-                                <span class="info-val">أحمد عبد الله (Ahmed Abdullah)</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label"><i class="fa-solid fa-building-columns"></i> الكلية:</span>
-                                <span class="info-val">كلية الحاسبات والمعلومات</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label"><i class="fa-solid fa-briefcase"></i> التخصص:</span>
-                                <span class="info-val">علوم الحاسب ومعالجة البيانات (CS / IT)</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label"><i class="fa-solid fa-location-dot"></i> الموقع:</span>
-                                <span class="info-val">جمهورية مصر العربية</span>
-                            </div>
-                            <div class="info-row">
-                                <span class="info-label"><i class="fa-solid fa-envelope"></i> البريد:</span>
-                                <span class="info-val">متاح للتواصل المباشر</span>
+                    <!-- Card 2: Profile Info (Medium - Spans 1 col) -->
+                    <div class="bento-card card-info">
+                        <div class="card-glow-glow"></div>
+                        <div class="bento-card-inner">
+                            <div class="card-icon"><i class="fa-solid fa-user-check"></i></div>
+                            <h3>بطاقة التعريف</h3>
+                            <div class="info-rows-bento">
+                                <div class="info-row-bento">
+                                    <span class="lbl">الاسم:</span>
+                                    <span class="val">أحمد عبد الله</span>
+                                </div>
+                                <div class="info-row-bento">
+                                    <span class="lbl">المرحلة الدراسية:</span>
+                                    <span class="val">الصف الثالث الثانوي 🎓</span>
+                                </div>
+                                <div class="info-row-bento">
+                                    <span class="lbl">المجال:</span>
+                                    <span class="val">تطوير البرمجيات والويب</span>
+                                </div>
+                                <div class="info-row-bento">
+                                    <span class="lbl">الموقع:</span>
+                                    <span class="val">مصر 🇪🇬</span>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="quote-card">
-                            <i class="fa-solid fa-quote-right quote-icon"></i>
-                            <p>"البرمجة ليست مجرد كتابة شفرات، بل هي فن تحويل الأفكار المعقدة إلى حلول بسيطة تُغير حياة البشر."</p>
+                    <!-- Card 3: Quote (Small - Spans 1 col) -->
+                    <div class="bento-card card-quote">
+                        <div class="card-glow-glow"></div>
+                        <div class="bento-card-inner">
+                            <i class="fa-solid fa-quote-right quote-icon-bento"></i>
+                            <p>"العمر ليس عائقاً أمام الإبداع؛ بالشغف والانضباط تصنع من الكود شعلة تضيء مستقبلك."</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Education & Future Aspirations (Large - Spans 2 cols, 1 row) -->
+                    <div class="bento-card card-academic col-span-2" id="journey">
+                        <div class="card-glow-glow"></div>
+                        <div class="bento-card-inner">
+                            <div class="academic-badge-icon-bento">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <div class="academic-details-bento">
+                                <h3>طموحي ومسيرتي التعليمية (من 3 ثانوي إلى القمة)</h3>
+                                <p>
+                                    أستعد حالياً لاجتياز مرحلة الثانوية العامة بأعلى تميز، واضعاً نصب عيني أن أصبح مهندس برمجيات محترف وأحد رواد التكنولوجيا والذكاء الاصطناعي في الوطن العربي والعالم.
+                                </p>
+                                <div class="academic-grid-stats-bento">
+                                    <div class="ac-stat-bento">
+                                        <i class="fa-solid fa-brain"></i>
+                                        <span>تفكير خوارزمي ورياضي</span>
+                                    </div>
+                                    <div class="ac-stat-bento">
+                                        <i class="fa-solid fa-laptop-code"></i>
+                                        <span>بناء مشاريع برمجية متكاملة</span>
+                                    </div>
+                                    <div class="ac-stat-bento">
+                                        <i class="fa-solid fa-compass"></i>
+                                        <span>طموح نحو هندسة البرمجيات</span>
+                                    </div>
+                                    <div class="ac-stat-bento">
+                                        <i class="fa-solid fa-star"></i>
+                                        <span>شغف مستمر بالذكاء الاصطناعي</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Modern Status Card (Spans 1 col) -->
+                    <div class="bento-card card-status">
+                        <div class="card-glow-glow"></div>
+                        <div class="bento-card-inner">
+                            <div class="card-icon"><i class="fa-solid fa-satellite"></i></div>
+                            <h3>حالة النشاط</h3>
+                            <div class="status-indicator-bento">
+                                <span class="indicator-glow-dot"></span>
+                                <span class="status-text-bento">متاح للتعاون البرمجي والمشاريع الإبداعية</span>
+                            </div>
+                            <div class="quick-call-cta">
+                                <a href="#contact" class="bento-cta-btn"><i class="fa-solid fa-message"></i> تواصل معي الآن</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+
+
         <!-- Skills Section -->
         <section id="skills" class="section-padding skills-section">
             <div class="container">
                 <div class="section-header text-center">
                     <span class="section-badge"><i class="fa-solid fa-layer-group"></i> المهارات والتقنيات</span>
-                    <h2 class="section-title">الأدوات التي نُبدع بها</h2>
-                    <p class="section-subtitle">مجموعة متكاملة من اللغات والتقنيات التي أستخدمها في بناء المشاريع</p>
+                    <h2 class="section-title">الأدوات التي أُبدع بها</h2>
+                    <p class="section-subtitle">مجموعة متكاملة من اللغات والتقنيات التي أستخدمها في بناء وتطوير المشاريع</p>
                 </div>
 
                 <div class="skills-grid">
@@ -248,13 +315,13 @@
                     <div class="skill-card">
                         <div class="skill-icon-header">
                             <i class="fa-solid fa-code"></i>
-                            <h3>أساسيات علوم الحاسب (CS Core)</h3>
+                            <h3>أساسيات البرمجة وعلوم الحاسب (CS Core)</h3>
                         </div>
                         <ul class="skill-list">
                             <li><span class="skill-name">Data Structures & Algorithms</span> <span class="skill-lvl">متقدم</span></li>
                             <li><span class="skill-name">Object-Oriented Programming (OOP)</span> <span class="skill-lvl">متقدم</span></li>
                             <li><span class="skill-name">C++ & Python</span> <span class="skill-lvl">ممتاز</span></li>
-                            <li><span class="skill-name">Software Design Patterns</span> <span class="skill-lvl">جيد جداً</span></li>
+                            <li><span class="skill-name">Problem Solving & Logic</span> <span class="skill-lvl">متميز</span></li>
                         </ul>
                     </div>
 
@@ -268,7 +335,7 @@
                             <li><span class="skill-name">HTML5 & Modern CSS3 / SASS</span> <span class="skill-lvl">خبير</span></li>
                             <li><span class="skill-name">JavaScript (ES6+)</span> <span class="skill-lvl">متقدم</span></li>
                             <li><span class="skill-name">Responsive & RTL UI/UX Design</span> <span class="skill-lvl">خبير</span></li>
-                            <li><span class="skill-name">React.js & Web Components</span> <span class="skill-lvl">جيد جداً</span></li>
+                            <li><span class="skill-name">Modern UI Components & Animations</span> <span class="skill-lvl">جيد جداً</span></li>
                         </ul>
                     </div>
 
@@ -276,12 +343,12 @@
                     <div class="skill-card">
                         <div class="skill-icon-header">
                             <i class="fa-solid fa-server"></i>
-                            <h3>الخلفية وقواعد البيانات (Backend & DB)</h3>
+                            <h3>الخلفية والأدوات البرمجية (Backend & Tools)</h3>
                         </div>
                         <ul class="skill-list">
-                            <li><span class="skill-name">Node.js & Express</span> <span class="skill-lvl">جيد جداً</span></li>
+                            <li><span class="skill-name">Node.js & Express Basics</span> <span class="skill-lvl">جيد جداً</span></li>
                             <li><span class="skill-name">RESTful APIs Integration</span> <span class="skill-lvl">متقدم</span></li>
-                            <li><span class="skill-name">SQL Databases (MySQL / PostgreSQL)</span> <span class="skill-lvl">جيد جداً</span></li>
+                            <li><span class="skill-name">SQL & Data Management</span> <span class="skill-lvl">جيد جداً</span></li>
                             <li><span class="skill-name">Git & GitHub Version Control</span> <span class="skill-lvl">متقدم</span></li>
                         </ul>
                     </div>
@@ -295,7 +362,7 @@
                 <div class="section-header text-center">
                     <span class="section-badge"><i class="fa-solid fa-diagram-project"></i> معارض الأعمال</span>
                     <h2 class="section-title">أحدث المشاريع والابتكارات</h2>
-                    <p class="section-subtitle">نماذج من أعمالي البرمجية التي تعكس المهارات الأكاديمية والعملية</p>
+                    <p class="section-subtitle">نماذج من أعمالي البرمجية التي تعكس شغفي العملي والتطبيقي</p>
                 </div>
 
                 <div class="projects-grid">
@@ -303,13 +370,20 @@
                     <div class="project-card">
                         <div class="project-img-wrapper">
                             <div class="project-placeholder bg-grad-1">
-                                <i class="fa-solid fa-graduation-cap"></i>
+                                <div class="glow-cyber-overlay"></div>
+                                <div class="cyber-lines"></div>
+                                <i class="fa-solid fa-book-open-reader project-icon-floating"></i>
+                                <div class="cyber-terminal-header">
+                                    <span class="dot-win red"></span>
+                                    <span class="dot-win yellow"></span>
+                                    <span class="dot-win green"></span>
+                                </div>
                             </div>
-                            <span class="project-category">منصة أكاديمية</span>
+                            <span class="project-category">منصة دراسية تفاعلية</span>
                         </div>
                         <div class="project-body">
-                            <h3>نظام إدارة المواد لطلاب الحاسبات</h3>
-                            <p>تطبيق ويب متكامل يساعد طلاب كلية الحاسبات والمعلومات على تنظيم الجدول العلمي، حساب المعدل، وحفظ ملخصات الخوارزميات.</p>
+                            <h3>منصة إدارة المذاكرة لطلاب الثانوية العامة</h3>
+                            <p>تطبيق ويب تفاعلي ذكي يساعد طلاب 3 ثانوي على تنظيم الجداول الدراسية، متابعة ساعات التحصيل، وإدارة المهام اليومية بفعالية.</p>
                             <div class="project-tags">
                                 <span>HTML5</span> <span>CSS3</span> <span>JavaScript</span> <span>LocalStorage</span>
                             </div>
@@ -324,13 +398,20 @@
                     <div class="project-card">
                         <div class="project-img-wrapper">
                             <div class="project-placeholder bg-grad-2">
-                                <i class="fa-solid fa-chart-pie"></i>
+                                <div class="glow-cyber-overlay"></div>
+                                <div class="cyber-lines"></div>
+                                <i class="fa-solid fa-chart-pie project-icon-floating"></i>
+                                <div class="cyber-terminal-header">
+                                    <span class="dot-win red"></span>
+                                    <span class="dot-win yellow"></span>
+                                    <span class="dot-win green"></span>
+                                </div>
                             </div>
-                            <span class="project-category">تحليل بياني</span>
+                            <span class="project-category">محاكاة خوارزمية</span>
                         </div>
                         <div class="project-body">
-                            <h3>أداة محاكاة وجدولة المعالج (CPU Scheduler Simulator)</h3>
-                            <p>أداة تفاعلية تقوم بمحاكاة خوارزميات جدولة العمليات في نظم التشغيل (FCFS, SJF, Round Robin) وعرض رسم جانت التفاعلي.</p>
+                            <h3>أداة محاكاة وجدولة العمليات (CPU Scheduler Simulator)</h3>
+                            <p>أداة تفاعلية تقوم بمحاكاة خوارزميات جدولة العمليات في نظم الحاسب (FCFS, SJF, Round Robin) مع تمثيل بياني تفاعلي لحظي.</p>
                             <div class="project-tags">
                                 <span>C++</span> <span>Algorithms</span> <span>Web Visualization</span>
                             </div>
@@ -345,53 +426,25 @@
                     <div class="project-card">
                         <div class="project-img-wrapper">
                             <div class="project-placeholder bg-grad-3">
-                                <i class="fa-solid fa-envelope-circle-check"></i>
+                                <div class="glow-cyber-overlay"></div>
+                                <div class="cyber-lines"></div>
+                                <i class="fa-solid fa-envelope-circle-check project-icon-floating"></i>
+                                <div class="cyber-terminal-header">
+                                    <span class="dot-win red"></span>
+                                    <span class="dot-win yellow"></span>
+                                    <span class="dot-win green"></span>
+                                </div>
                             </div>
-                            <span class="project-category">محرك مراسلة</span>
+                            <span class="project-category">محرك مراسلة فوري</span>
                         </div>
                         <div class="project-body">
-                            <h3>نظام المراسلة الآمن وإرسال الإشعارات</h3>
-                            <p>نموذج تواصل تفاعلي يربط واجهة المستخدم بخدمات البريد الإلكتروني الفورية بدون الحاجة لخدمات خادم معقدة.</p>
+                            <h3>نظام المراسلة السريع وإرسال الإشعارات</h3>
+                            <p>نموذج تواصل تفاعلي يربط الواجهة الأمامية بخدمات البريد الإلكتروني الفورية بدون الحاجة لخدمات خادم معقدة.</p>
                             <div class="project-tags">
                                 <span>JavaScript API</span> <span>Web3Forms</span> <span>Async UX</span>
                             </div>
                             <div class="project-links">
                                 <a href="#contact" class="proj-link"><i class="fa-solid fa-paper-plane"></i> جربه الآن بالأسفل</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Academic / Faculty Section -->
-        <section id="academic" class="section-padding academic-section">
-            <div class="container">
-                <div class="academic-card">
-                    <div class="academic-badge-icon">
-                        <i class="fa-solid fa-university"></i>
-                    </div>
-                    <div class="academic-details">
-                        <h2>كلية الحاسبات والمعلومات</h2>
-                        <p class="academic-desc">
-                            الكلية التي تمثل انطلاقتي نحو عالم التكنولوجيا المتقدمة والذكاء الاصطناعي. دراستي الأكاديمية زوّدتني بالفكر المنطقي المتين والقدرة على ابتكار الحلول التقنية.
-                        </p>
-                        <div class="academic-grid-stats">
-                            <div class="ac-stat">
-                                <i class="fa-solid fa-brain"></i>
-                                <span>تفكير خوارزمي متقدم</span>
-                            </div>
-                            <div class="ac-stat">
-                                <i class="fa-solid fa-network-wired"></i>
-                                <span>شبكات ونظم تشغيل</span>
-                            </div>
-                            <div class="ac-stat">
-                                <i class="fa-solid fa-database"></i>
-                                <span>هندسة وتصميم قواعد البيانات</span>
-                            </div>
-                            <div class="ac-stat">
-                                <i class="fa-solid fa-microchip"></i>
-                                <span>معمارية الحاسب والتنفيذ الموازي</span>
                             </div>
                         </div>
                     </div>
@@ -415,22 +468,30 @@
                             <div class="c-icon"><i class="fa-solid fa-envelope"></i></div>
                             <div>
                                 <h4>البريد الإلكتروني المباشر</h4>
-                                <p>أرسل لي استفسارك أو عرضك البرمجي</p>
-                                <span class="c-val">ahmed.abdullah.fci@gmail.com</span>
+                                <p>أرسل لي استفسارك أو رسالتك وسأرد عليك سريعاً</p>
+                                <span class="c-val"><a href="mailto:ahmed.abdullah.fci@gmail.com" class="contact-link">ahmed.abdullah.fci@gmail.com</a></span>
                             </div>
                         </div>
                         <div class="c-card">
-                            <div class="c-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                            <div class="c-icon"><i class="fa-brands fa-whatsapp"></i></div>
                             <div>
-                                <h4>الكلية والتخصص</h4>
-                                <p>كلية الحاسبات والمعلومات</p>
-                                <span class="c-val">طالب علوم حاسب ومعلوماتية</span>
+                                <h4>رقم الهاتف / واتساب</h4>
+                                <p>للتواصل الفوري والمراسلة المباشرة</p>
+                                <span class="c-val"><a href="https://wa.me/201102289174" target="_blank" class="contact-link">+201102289174</a></span>
+                            </div>
+                        </div>
+                        <div class="c-card">
+                            <div class="c-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div>
+                                <h4>المرحلة الدراسية والتخصص</h4>
+                                <p>الصف الثالث الثانوي (3 ثانوي) 🎓</p>
+                                <span class="c-val">طالب بالثانوية العامة ومطور برمجيات</span>
                             </div>
                         </div>
                         <div class="c-card">
                             <div class="c-icon"><i class="fa-solid fa-music"></i></div>
                             <div>
-                                <h4>المؤثرات الصوتية</h4>
+                                <h4>المؤثرات الصوتية الترحيبية</h4>
                                 <p>يمكنك تشغيل/إيقاف أو استبدال المقطع الصوتي من المشغل العائم في الأسفل</p>
                             </div>
                         </div>
@@ -439,35 +500,36 @@
                     <!-- Contact Form Formspree/Web3Forms Integration -->
                     <div class="contact-form-side">
                         <form id="real-contact-form" class="contact-form">
-                            <!-- Access Key for Web3Forms or EmailJS (User can supply key or default) -->
-                            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" id="web3forms-key">
-                            <input type="hidden" name="from_name" value="موقع أحمد عبد الله الشخصي">
-                            <input type="hidden" name="subject" value="رسالة جديدة من زائر الموقع الشخصي">
                             
                             <div class="form-group">
                                 <label for="sender-name"><i class="fa-solid fa-user"></i> اسمك الكريم:</label>
-                                <input type="text" id="sender-name" name="name" placeholder="أدخل اسمك الكامل..." required>
+                                <input type="text" id="sender-name" name="الاسم" placeholder="أدخل اسمك الكامل..." required>
                             </div>
 
                             <div class="form-group">
                                 <label for="sender-email"><i class="fa-solid fa-at"></i> بريدك الإلكتروني:</label>
-                                <input type="email" id="sender-email" name="email" placeholder="example@domain.com" required>
+                                <input type="email" id="sender-email" name="البريد_الإلكتروني" placeholder="example@domain.com" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="sender-subject"><i class="fa-solid fa-heading"></i> موضوع الرسالة:</label>
-                                <input type="text" id="sender-subject" name="custom_subject" placeholder="عن ماذا تدور رسالتك؟" required>
+                                <input type="text" id="sender-subject" name="الموضوع" placeholder="عن ماذا تدور رسالتك؟" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="sender-message"><i class="fa-solid fa-message"></i> نص الرسالة:</label>
-                                <textarea id="sender-message" name="message" rows="5" placeholder="اكتب رسالتك التفصيلية هنا..." required></textarea>
+                                <textarea id="sender-message" name="الرسالة" rows="5" placeholder="اكتب رسالتك التفصيلية هنا..." required></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-submit" id="submit-btn">
-                                <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> إرسال الرسالة إلى أحمد الآن</span>
-                                <span class="btn-spinner hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> جاري الإرسال الفعلي...</span>
-                            </button>
+                            <div class="form-actions-row">
+                                <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+                                    <span class="btn-text"><i class="fa-solid fa-envelope"></i> إرسال إلى بريدي</span>
+                                    <span class="btn-spinner hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> جاري الإرسال...</span>
+                                </button>
+                                <button type="button" class="btn btn-whatsapp" id="whatsapp-send-btn">
+                                    <i class="fa-brands fa-whatsapp"></i> إرسال عبر واتساب فوراً
+                                </button>
+                            </div>
 
                             <!-- Alert Response Message Container -->
                             <div id="form-response-alert" class="form-response-alert hidden"></div>
@@ -484,16 +546,16 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="#hero" class="nav-logo">
-                    <span class="logo-badge">FCI</span>
+                    <span class="logo-badge">3Sec 🚀</span>
                     <span class="logo-name">أحمد عبد الله</span>
                 </a>
-                <p>طالب بكلية الحاسبات والمعلومات - جميع الحقوق محفوظة &copy; 2026</p>
+                <p>طالب بالصف الثالث الثانوي ومطور برمجيات - جميع الحقوق محفوظة &copy; 2026</p>
             </div>
             <div class="footer-socials">
-                <a href="#contact" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="#contact" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#contact" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="#contact" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://wa.me/201102289174" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="mailto:ahmed.abdullah.fci@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>

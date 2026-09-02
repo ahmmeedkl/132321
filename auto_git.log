@@ -1,0 +1,97 @@
+2026-08-11 00:19:27 [INFO] - ============================================================
+2026-08-11 00:19:27 [INFO] - Auto-Git DevOps Assistant Initialized
+2026-08-11 00:19:27 [INFO] - ============================================================
+2026-08-11 00:19:27 [WARNING] - LLM Client: No GEMINI_API_KEY or OPENAI_API_KEY found in environment variables. Falling back to local/rules mode.
+2026-08-11 00:19:27 [INFO] - Starting autonomous DevOps cycle...
+2026-08-11 00:19:27 [DEBUG] - Running command: git --version
+2026-08-11 00:19:27 [ERROR] - Failed to run command '['git', '--version']': [WinError 2] The system cannot find the file specified
+2026-08-11 00:19:27 [CRITICAL] - Git command not found. Please install Git and make sure it is added to your system PATH.
+2026-08-11 00:19:40 [INFO] - ============================================================
+2026-08-11 00:19:40 [INFO] - Auto-Git DevOps Assistant Initialized
+2026-08-11 00:19:40 [INFO] - ============================================================
+2026-08-11 00:19:40 [WARNING] - LLM Client: No GEMINI_API_KEY or OPENAI_API_KEY found in environment variables. Falling back to local/rules mode.
+2026-08-11 00:19:40 [INFO] - Starting autonomous DevOps cycle...
+2026-08-11 00:19:40 [DEBUG] - Running command: git --version
+2026-08-11 00:19:40 [ERROR] - Failed to run command '['git', '--version']': [WinError 2] The system cannot find the file specified
+2026-08-11 00:19:40 [CRITICAL] - Git command not found. Please install Git and make sure it is added to your system PATH.
+2026-08-11 00:22:28 [INFO] - ============================================================
+2026-08-11 00:22:28 [INFO] - Auto-Git DevOps Assistant Initialized
+2026-08-11 00:22:28 [INFO] - ============================================================
+2026-08-11 00:22:28 [WARNING] - LLM Client: No GEMINI_API_KEY or OPENAI_API_KEY found in environment variables. Falling back to local/rules mode.
+2026-08-11 00:22:28 [INFO] - Starting autonomous DevOps cycle...
+2026-08-11 00:22:28 [DEBUG] - Running command: git --version
+2026-08-11 00:22:28 [ERROR] - Failed to run command '['git', '--version']': [WinError 2] The system cannot find the file specified
+2026-08-11 00:22:28 [CRITICAL] - Git command not found. Please install Git and make sure it is added to your system PATH.
+2026-08-11 00:23:37 [INFO] - ============================================================
+2026-08-11 00:23:37 [INFO] - Auto-Git DevOps Assistant Initialized
+2026-08-11 00:23:37 [INFO] - ============================================================
+2026-08-11 00:23:37 [WARNING] - LLM Client: No GEMINI_API_KEY or OPENAI_API_KEY found in environment variables. Falling back to local/rules mode.
+2026-08-11 00:23:37 [INFO] - Starting autonomous DevOps cycle...
+2026-08-11 00:23:37 [DEBUG] - Running command: git --version
+2026-08-11 00:23:37 [INFO] - Initializing new local Git repository...
+2026-08-11 00:23:37 [DEBUG] - Running command: git init
+2026-08-11 00:23:37 [DEBUG] - Running command: git checkout -b main
+2026-08-11 00:23:37 [DEBUG] - Running command: git status --porcelain
+2026-08-11 00:23:37 [INFO] - Staging changes...
+2026-08-11 00:23:37 [INFO] - Scanning untracked files for safety checks (.gitignore)...
+2026-08-11 00:23:37 [DEBUG] - Running command: git status --porcelain
+2026-08-11 00:23:37 [WARNING] - Sensitive file pattern matched: 'auto_git.log'. Adding to .gitignore.
+2026-08-11 00:23:37 [INFO] - Updated .gitignore with 1 entries.
+2026-08-11 00:23:37 [DEBUG] - Running command: git add .gitignore
+2026-08-11 00:23:38 [DEBUG] - Running command: git add .
+2026-08-11 00:23:38 [DEBUG] - Running command: git diff --staged
+2026-08-11 00:23:38 [WARNING] - No files staged for commit.
+2026-08-11 00:24:20 [INFO] - ============================================================
+2026-08-11 00:24:20 [INFO] - Auto-Git DevOps Assistant Initialized
+2026-08-11 00:24:20 [INFO] - ============================================================
+2026-08-11 00:24:20 [WARNING] - LLM Client: No GEMINI_API_KEY or OPENAI_API_KEY found in environment variables. Falling back to local/rules mode.
+2026-08-11 00:24:20 [INFO] - Starting autonomous DevOps cycle...
+2026-08-11 00:24:20 [DEBUG] - Running command: git --version
+2026-08-11 00:24:20 [DEBUG] - Running command: git status --porcelain
+2026-08-11 00:24:20 [INFO] - Staging changes...
+2026-08-11 00:24:20 [INFO] - Scanning untracked files for safety checks (.gitignore)...
+2026-08-11 00:24:20 [DEBUG] - Running command: git status --porcelain
+2026-08-11 00:24:20 [DEBUG] - Running command: git add .
+2026-08-11 00:24:20 [DEBUG] - Running command: git diff --staged
+2026-08-11 00:24:20 [INFO] - Generating commit message locally via rule engine...
+2026-08-11 00:24:20 [DEBUG] - Running command: git diff --staged --name-status
+2026-08-11 00:24:20 [INFO] - Selected Commit Message:
+>>> feat: auto-sync (added .gitignore, audio.mp3, index.html...)
+2026-08-11 00:24:20 [DEBUG] - Running command: git commit -m feat: auto-sync (added .gitignore, audio.mp3, index.html...)
+2026-08-11 00:24:20 [ERROR] - Failed to commit changes: Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'ahmed@DESKTOP-NEQSEAO.(none)')
+
+2026-08-11 00:28:05 [INFO] - ============================================================
+2026-08-11 00:28:05 [INFO] - Auto-Git DevOps Assistant Initialized
+2026-08-11 00:28:05 [INFO] - ============================================================
+2026-08-11 00:28:05 [WARNING] - LLM Client: No GEMINI_API_KEY or OPENAI_API_KEY found in environment variables. Falling back to local/rules mode.
+2026-08-11 00:28:05 [INFO] - Starting autonomous DevOps cycle...
+2026-08-11 00:28:05 [DEBUG] - Running command: git --version
+2026-08-11 00:28:05 [DEBUG] - Running command: git status --porcelain
+2026-08-11 00:28:05 [INFO] - Staging changes...
+2026-08-11 00:28:05 [INFO] - Scanning untracked files for safety checks (.gitignore)...
+2026-08-11 00:28:05 [DEBUG] - Running command: git status --porcelain
+2026-08-11 00:28:05 [DEBUG] - Running command: git add .
+2026-08-11 00:28:05 [DEBUG] - Running command: git diff --staged
+2026-08-11 00:28:05 [INFO] - Generating commit message locally via rule engine...
+2026-08-11 00:28:05 [DEBUG] - Running command: git diff --staged --name-status
+2026-08-11 00:28:05 [INFO] - Selected Commit Message:
+>>> feat: auto-sync (added .gitignore, audio.mp3, index.html...)
+2026-08-11 00:28:05 [DEBUG] - Running command: git commit -m feat: auto-sync (added .gitignore, audio.mp3, index.html...)
+2026-08-11 00:28:06 [DEBUG] - Running command: git remote get-url origin
+2026-08-11 00:28:06 [WARNING] - No remote origin detected. Attempting to set up GitHub repository...
+2026-08-11 00:28:06 [DEBUG] - Running command: gh --version
+2026-08-11 00:28:06 [ERROR] - Failed to run command '['gh', '--version']': [WinError 2] The system cannot find the file specified
+2026-08-11 00:28:06 [ERROR] - Authentication failed: Could not create remote GitHub repository.
+Please ensure you are authenticated using GitHub CLI ('gh auth login') or set GITHUB_TOKEN or GH_TOKEN environment variables with repo permissions.
