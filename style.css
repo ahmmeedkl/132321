@@ -762,16 +762,19 @@ h1, h2, h3, h4 {
 .banner-image-container {
     position: relative;
     width: 100%;
-    height: 480px;
+    aspect-ratio: 3 / 4;
+    height: auto;
+    max-height: 500px;
     border-radius: 24px;
     overflow: hidden;
+    background: #0d121f;
 }
 
 .hero-profile-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 25%;
+    object-position: center top;
     transition: transform var(--transition-smooth);
 }
 
@@ -1851,7 +1854,7 @@ h1, h2, h3, h4 {
     .nav-audio-info .audio-title { display: none; }
     .navbar-audio-player { padding: 3px 6px; gap: 4px; }
     .hero-quick-stats { grid-template-columns: 1fr; }
-    .banner-image-container { height: 350px; }
+    .banner-image-container { aspect-ratio: 3 / 4; height: auto; max-height: 440px; }
     .section-title { font-size: 2rem; }
     .contact-form-side { padding: 25px 18px; }
     .bento-card { padding: 22px; }
